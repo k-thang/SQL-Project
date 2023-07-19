@@ -10,10 +10,10 @@ This repository allows the reader to attain insights into an e-commerce’s stor
 4. Identified the database’s risk areas and crafted a quality assurance process which tested several quality assurance dimensions. A detailed description of this process can be found in [QA.md](QA.md).
 
 ## Results
-Key business insights were: 
+Key business insights: 
 * The most profitable channel is referrals. Based on this finding, the business should utilize its existing customer base to request customer testimonials and develop incentives for referring customers as a low cost way to yield returns.
 * The USA has the highest demand for products over any other country. The data indicated that more than 15 cities within the USA order products from the site whereas the orders from other countries are only concentrated in 1-2 cities. The business should review strategies that emphasize geographical expansion within target countries in order to maximize profits and achieve economies of scale.
-* Apart from certain cities in the USA and Spain, the average number of products sold from each city and country is 1.0. The business should incentive purchasers to buy more items per visit by offering free shipping with minimum purchase, volume discounts, etc.
+* Apart from certain cities in the USA and Spain, the average number of products sold from each city and country is 1.0. The business should incentive purchasers to buy more items per visit by offering free shipping with minimum purchase or volume discounts to increase wallet share.
 
 More discoveries can be found in [starting_with_questions.md](starting_with_questions.md) and [starting_with_data.md](starting_with_data.md).
 
