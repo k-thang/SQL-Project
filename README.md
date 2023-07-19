@@ -6,7 +6,7 @@ This repository allows the reader to attain insights into an e-commerce’s stor
 ## Process
 1. Database creation using PgAdmin and the provided [csv files](https://drive.google.com/drive/folders/1efDA4oc9w-bTbAvrESdOJpg9u-gEUBhJ).
 2. Cleaned the data using various transformations. Review details and queries on [cleaning_data.md](cleaning_data.md).
-3. Developed queries to attain insights on the data. Exact questions, queries and answers can be found in [starting_with_questions.md](starting_with_question.md) and [starting_with_data.md](starting_with_data.md).
+3. Developed queries to attain insights on the data. Exact questions, queries and answers can be found in [starting_with_questions.md](starting_with_questions.md) and [starting_with_data.md](starting_with_data.md).
 4. Identified the database’s risk areas and crafted a quality assurance process which tested several quality assurance dimensions. A detailed description of this process can be found in [QA.md](QA.md).
 
 ## Results
@@ -15,7 +15,7 @@ Key business insights were:
 * The USA has the highest demand for products over any other country. The data indicated that more than 15 cities within the USA order products from the site whereas the orders from other countries are only concentrated in 1-2 cities. The business should review strategies that emphasize geographical expansion within target countries in order to maximize profits and achieve economies of scale.
 * Apart from certain cities in the USA and Spain, the average number of products sold from each city and country is 1.0. The business should incentive purchasers to buy more items per visit by offering free shipping with minimum purchase, volume discounts, etc.
 
-More discoveries can be found in [starting_with_questions.md](starting_with_question.md) and [starting_with_data.md](starting_with_data.md).
+More discoveries can be found in [starting_with_questions.md](starting_with_questions.md) and [starting_with_data.md](starting_with_data.md).
 
 ## Challenges 
 * Interpreting the relationships between entities and the purpose of each attribute. Without any context, selecting data types and transforming the data was a challenge.
