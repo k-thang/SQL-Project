@@ -48,7 +48,7 @@ UPDATE salesreport
 SET name = LTRIM(name);
 ```
 **Addressing Time Columns** <br>
-The attribute `visit_starttime` in the analytics table was displayed in epoch time which is a recognized format. However, `time.all_sessions` displays a more ambiguous format. Until more information is provided, I would make the assumption that all_session.time is either incorrect or incomplete.
+The attribute `visit_starttime` in the analytics table was displayed in epoch time which is a recognized format. However, `time.all_sessions` displays a more ambiguous format. Until more information is provided, I would make the assumption that `all_sessions.time` is either incorrect or incomplete.
 
 Therefore, I deleted `all_sessions.time` and will only reference `analytics.visit_starttime` to reduce redundancy in the database. The query to delete the aforementioned attribute is as follows:
 ```SQL
