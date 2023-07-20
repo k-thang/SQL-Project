@@ -93,3 +93,65 @@ ADD PRIMARY KEY (insert_attribute_name);
 ALTER TABLE insert_table_name
 ADD FOREIGN KEY (insert_attribute_name) REFERENCES existing_table_name(existing_table_primarykey);
 ```
+**Addressing Duplicate Data** <br>
+Duplicate data was found in the analytics and all_sessions table. The following queries were executed in order to check for duplicates and then delete them:
+```SQL
+-- Query checks the entire analytics table for duplicate values
+SELECT 	 COUNT(*), 
+         visitnumber,
+         visitid,
+         visit_starttime,
+         date,
+         fullvisitorid,
+         userid,
+         channel_grouping,
+         social_engagement_type,
+         units_sold,
+         pageviews,
+         time_onsite,
+         bounces,
+         revenue,
+         unit_price
+FROM analytics
+GROUP BY visitnumber, 
+         visitid,
+         visit_starttime,
+         date,
+         fullvisitorid,
+         userid,
+         channel_grouping,
+         social_engagement_type,
+         units_sold,
+         pageviews,
+         time_onsite,
+         bounces,
+         revenue,
+         unit_price
+HAVING COUNT(*) > 1;
+```
+```SQL
+-- Query creates uses the PARTITION BY clause in order to group the duplicates
+CREATE TABLE new_analytics AS (
+	SELECT *, 
+               ROW_NUMBER() OVER (PARTITION BY visitnumber, 
+                                               visitid, 
+                                               visit_starttime, 
+                                               date, 
+                                               fullvisitorid, 
+                                               userid, 
+                                               channel_grouping, 
+                                               social_engagement_type, 
+                                               units_sold, 
+                                               pageviews, 
+                                               time_onsite, 
+                                               bounces, 
+                                               revenue, 
+                                               unit_price									
+               ORDER BY fullvisitorid) AS row_num					
+FROM analytics);
+```
+```SQL
+-- Query deletes the duplicates in the new_analytics table
+DELETE FROM new_analytics
+WHERE row_num <> 1;
+```
