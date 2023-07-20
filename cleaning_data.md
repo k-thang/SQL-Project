@@ -148,7 +148,8 @@ CREATE TABLE new_analytics AS (
                                                revenue, 
                                                unit_price									
                ORDER BY fullvisitorid) AS row_num					
-FROM analytics);
+	 FROM analytics
+);
 ```
 ```SQL
 -- Query deletes the duplicates in the new_analytics table
