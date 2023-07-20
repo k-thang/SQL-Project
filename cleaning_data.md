@@ -158,6 +158,6 @@ WHERE row_num <> 1;
 ```
 ```SQL
 -- Query deletes the column ‘row_num’ that was created through the PARTITION BY clause. This column is no longer needed once the duplicates have been deleted from the new table.
-ALTER TABLE new_all_sessions
+ALTER TABLE new_analytics
 DROP COLUMN row_num;
 ```
