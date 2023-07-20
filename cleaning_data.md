@@ -130,7 +130,7 @@ GROUP BY visitnumber,
 HAVING COUNT(*) > 1;
 ```
 ```SQL
--- Query creates uses the PARTITION BY clause in order to group the duplicates
+-- Query creates a new table that groups the duplicates using the PARTITION BY clause
 CREATE TABLE new_analytics AS (
 	SELECT *, 
                ROW_NUMBER() OVER (PARTITION BY visitnumber, 
@@ -155,4 +155,9 @@ CREATE TABLE new_analytics AS (
 -- Query deletes the duplicates in the new_analytics table
 DELETE FROM new_analytics
 WHERE row_num <> 1;
+```
+```SQL
+-- Query deletes the column ‘row_num’ that was created through the PARTITION BY clause. This column is no longer needed once the duplicates have been deleted from the new table.
+ALTER TABLE new_all_sessions
+DROP COLUMN row_num;
 ```
