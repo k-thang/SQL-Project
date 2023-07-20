@@ -6,7 +6,7 @@ SQL Queries:
 -- Country Query
 SELECT country,
        SUM(transaction_revenue) AS total_transaction_revenue
-FROM all_sessions
+FROM new_all_sessions
 WHERE transaction_revenue is not null 
 GROUP BY country
 ORDER BY SUM(transaction_revenue) DESC;
@@ -15,7 +15,7 @@ ORDER BY SUM(transaction_revenue) DESC;
 -- City Query
 SELECT  city,
         SUM(transaction_revenue) AS total_transaction_revenue
-FROM all_sessions
+FROM new_all_sessions
 WHERE transaction_revenue is not null AND city NOT LIKE '%not%'
 GROUP BY city
 ORDER BY SUM(transaction_revenue) DESC;
@@ -30,7 +30,7 @@ SQL Queries:
 -- Country Query
 SELECT 	country,
         ROUND(AVG(product_quantity),2) AS avg_products_ordered
-FROM all_sessions 
+FROM new_all_sessions 
 GROUP BY country
 HAVING AVG(product_quantity) is NOT NULL
 ORDER BY AVG(product_quantity) DESC;
@@ -39,7 +39,7 @@ ORDER BY AVG(product_quantity) DESC;
 -- City Query
 SELECT 	city,
         ROUND(AVG(product_quantity),2) AS avg_products_ordered
-FROM all_sessions 
+FROM new_all_sessions 
 WHERE city NOT LIKE ('%not%')
 GROUP BY city
 HAVING AVG(product_quantity) is NOT NULL
@@ -55,23 +55,23 @@ SQL Queries:
 SELECT 	country,
         v2productcategory,
         SUM(product_quantity) AS products_ordered
-FROM all_sessions 
+FROM new_all_sessions 
 WHERE v2productcategory NOT LIKE ('%not%')
 GROUP BY country, v2productcategory
 HAVING SUM(product_quantity) is NOT NULL
-ORDER BY country DESC;
+ORDER BY country;
 ```
 ```SQL
 -- City Query
 SELECT 	city,
         v2productcategory,
         SUM(product_quantity) AS products_ordered
-FROM all_sessions 
+FROM new_all_sessions 
 WHERE v2productcategory NOT LIKE ('%not%')
       AND city NOT LIKE ('%not%') 
 GROUP BY city, v2productcategory
 HAVING SUM(product_quantity) is NOT NULL
-ORDER BY city DESC;
+ORDER BY city;
 ```
 Answer: <br>
 * The USA has the highest demand for products specifically “Notebooks” (65 purchases) and “Bags” (54 purchases)
@@ -85,7 +85,7 @@ WITH order_totals AS (
   SELECT country,
          v2productname,
          SUM(product_quantity) AS total_product_quantity
-  FROM all_sessions
+  FROM new_all_sessions
   WHERE product_quantity > 0
   GROUP BY country, v2productname
 ),
@@ -108,7 +108,7 @@ WITH order_totals AS (
   SELECT city,
          v2productname,
          SUM(product_quantity) AS total_product_quantity
-  FROM all_sessions
+  FROM new_all_sessions
   WHERE product_quantity > 0
   GROUP BY city, v2productname
 ),
@@ -135,7 +135,7 @@ SQL Queries:
 -- Country Query
 SELECT country,
        SUM(product_price*product_quantity) AS revenue
-FROM all_sessions AS sessions
+FROM new_all_sessions
 GROUP BY country
 HAVING SUM(product_price*product_quantity) is NOT NULL
 ORDER BY SUM(product_price*product_quantity) DESC;
@@ -144,7 +144,7 @@ ORDER BY SUM(product_price*product_quantity) DESC;
 -- City Query
 SELECT city,
        SUM(product_price*product_quantity) AS revenue
-FROM all_sessions AS sessions
+FROM new_all_sessions
 WHERE city is NOT NULL
 GROUP BY city
 HAVING SUM(product_price*product_quantity) is NOT NULL
@@ -153,10 +153,3 @@ ORDER BY SUM(product_price*product_quantity) DESC;
 Answer:
 * The USA generates the most amount of revenue by a large margin. The USA maintains this position through cities like Mountain View, Salem and New York that generate much more revenue than non-US cities.
 * Other countries don’t generate the same level of revenue since they have only 1-2 cities that purchase products.
-
-
-
-
-
-
-
