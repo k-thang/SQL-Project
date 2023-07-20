@@ -3,7 +3,7 @@ SQL Queries:
 ```SQL
 SELECT channel_grouping AS channel,
        COUNT(DISTINCT(fullvisitorid)) AS unique_visitors
-FROM all_sessions
+FROM new_all_sessions
 GROUP BY channel_grouping
 ORDER BY channel_grouping;
 ```
@@ -16,8 +16,8 @@ Answer:
 SQL Queries:
 ```SQL
 SELECT channel_grouping,
-       SUM(product_quantity*product_price)
-FROM all_sessions
+       SUM(product_quantity*product_price) AS revenue
+FROM new_all_sessions
 WHERE product_quantity > 0
 GROUP by channel_grouping
 ORDER BY SUM(product_quantity*product_price) DESC;
@@ -29,7 +29,7 @@ SQL Queries:
 ```SQL
 SELECT EXTRACT(MONTH from sessions.date) AS month,
        SUM(product_price*product_quantity) AS revenue
-FROM all_sessions AS sessions
+FROM new_all_sessions AS sessions
 GROUP BY EXTRACT(MONTH from sessions.date)
 ORDER BY EXTRACT(MONTH from sessions.date);
 ```
@@ -44,7 +44,7 @@ WITH sales_totals AS (
   SELECT country,
          SUM(product_price*product_quantity) AS total_sales,
          DENSE_RANK() OVER (ORDER BY SUM(product_price*product_quantity) DESC) AS sales_rank
-  FROM all_sessions
+  FROM new_all_sessions
   WHERE product_quantity > 0
   AND EXTRACT(YEAR FROM date) = 2016
   GROUP BY country
@@ -52,7 +52,7 @@ WITH sales_totals AS (
 SELECT sessions.country,
        st.sales_rank,
        st.total_sales
-FROM all_sessions AS sessions
+FROM new_all_sessions AS sessions
 JOIN sales_totals AS st ON sessions.country = st.country
 GROUP BY sessions.country, st.sales_rank, st.total_sales
 ORDER BY st.sales_rank;
@@ -63,7 +63,7 @@ WITH sales_totals AS (
   SELECT country,
          SUM(product_price*product_quantity) AS total_sales,
          DENSE_RANK() OVER (ORDER BY SUM(product_price*product_quantity) DESC) AS sales_rank
-  FROM all_sessions
+  FROM new_all_sessions
   WHERE product_quantity > 0
   AND EXTRACT(YEAR FROM date) = 2017
   GROUP BY country
@@ -71,7 +71,7 @@ WITH sales_totals AS (
 SELECT sessions.country,
        st.sales_rank,
        st.total_sales
-FROM all_sessions AS sessions
+FROM new_all_sessions AS sessions
 JOIN sales_totals AS st ON sessions.country = st.country
 GROUP BY sessions.country, st.sales_rank, st.total_sales
 ORDER BY st.sales_rank;
@@ -88,7 +88,7 @@ WITH identify_purchase_activity AS (
            WHEN product_quantity is NULL THEN 'no_purchase_made'
            ELSE 'purchase_made'
          END AS purchase_activity
-	FROM all_sessions
+	FROM new_all_sessions
 	),
 visit_time AS (
   SELECT time_onsite,
