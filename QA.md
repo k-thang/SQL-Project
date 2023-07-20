@@ -2,12 +2,12 @@
 The biggest area of risk was not being able to identify if the issues were caused from upstream failures. For the purposes of this project, the short-term solution was to clean the data using various transformation techniques. However, if I had more time and context, I would dig deeper into the reasons behind the vast amounts of duplicate/null data and correct the upstream issues as a longer-term solution.
 
 **Duplicate Data Risk** <br>
-The analytics table contained millions of duplicate rows which had been deleted during my data cleaning. However, the identiying the root cause is crucial since duplicates: 
+The analytics table contained millions of duplicate rows which had been deleted during my data cleaning. However, identiying the root cause is crucial since duplicates: 
 * Inhibit accuracy and can skew results used to make business decisions 
 * Unnecessarily reduce query optimization
   
 **Missing Values Risk** <br>
-Within the dataset there were many null values that impeded my ability to produce complete and accurate reports. For example, `new_all_sessions.city` had many null values that made it difficult to determine the most accurate answers to the given questions [(starting_with_questions.md)](/starting_with_questions.md). Therefore, the city with the highest transaction revenue couldn’t be identified because that row’s city value was not available. As a result, the answer given was technically for the second highest transaction revenue instead.
+Within the dataset there were many null values that impeded my ability to produce complete and accurate reports. For example, `new_all_sessions.city` had many null values that made it difficult to determine the most accurate answers to the given questions in [starting_with_questions.md](/starting_with_questions.md). Therefore, the city with the highest transaction revenue couldn’t be identified because that row’s city value was not available. As a result, the answer given was technically for the second highest transaction revenue instead.
 
 The existence of null values doesn’t necessarily mean the data is of lower quality but it’s important to acknowledge that null values can hold a level of risk.
 
