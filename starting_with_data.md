@@ -8,8 +8,8 @@ GROUP BY channel_grouping
 ORDER BY channel_grouping;
 ```
 Answer: 
-* Most unique visitors visit the site through “organic search” (8027 visitors) which indicates that the site has been optimized for SEO (search engine optimization).
-* Unique visitors enter the site through the “direct” (2805 visitors) and “referral’ channels (2419 visitors) which indicates strong brand awareness.
+* Most unique visitors visit the site through “organic search” (8027 visitors) which indicates that the site has a good strategy for SEO (search engine optimization).
+* A high volume of visitors entering the site through the “direct” (2805 visitors) and “referral’ channels (2419 visitors) indicates strong brand awareness.
 * The other channel groupings are less successful at bringing in unique visitors which would indicate a need to shift strategy in these areas.
 
 ## Question 2: Which channel grouping generates the most amount of revenue?
@@ -23,7 +23,7 @@ GROUP by channel_grouping
 ORDER BY SUM(product_quantity*product_price) DESC;
 ```
 Answer:
-Referrals generate the most amount of revenue, followed by the organic search and direct channels. Considering word of mouth is a revenue generator then the site should start requesting customer testimonies and offering referral bonuses to boost referral sales.
+Referrals generate the most amount of revenue followed by the organic search and direct channels. Since word of mouth proves to be a revenue generator then the site should start requesting customer testimonies and offering referral bonuses to boost referral sales.
 ## Question 3: How is the revenue distributed by month? Are there any patterns?
 SQL Queries:
 ```SQL
@@ -34,7 +34,7 @@ GROUP BY EXTRACT(MONTH from sessions.date)
 ORDER BY EXTRACT(MONTH from sessions.date);
 ```
 Answer:
-On average, the last month of each quarter is the most profitable (March, June, Sept, Dec). Possibly due to the sales team attempting to get their quotas completed before the quarter end.
+On average, the last month of each quarter is the most profitable (March, June, Sept, Dec). Possibly due to the sales team attempting to meet their quotas before the quarter ends.
 
 ## Question 4: Rank the countries by the amount of money spent by visitors in 2016 and 2017 respectively. Identify the country that is ranked the highest in 2016 and 2017.
 SQL Queries:
@@ -89,7 +89,7 @@ WITH identify_purchase_activity AS (
            ELSE 'purchase_made'
          END AS purchase_activity
 	FROM new_all_sessions
-	),
+),
 visit_time AS (
   SELECT time_onsite,
          purchase_activity
