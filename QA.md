@@ -1,10 +1,10 @@
 ## What are your risk areas? Identify and describe them.
-The biggest area of risk was not being able to identify if the issues were caused from upstream failures. For the purposes of this project, the short-term solution was to clean the data using various transformation techniques. However, if I had more time and context, I would dig deeper into the reasons behind the vast amounts of duplicate/null data and correct the upstream issues as a longer-term solution.
+The biggest area of risk was not being able to fix the root cause of the data’s quality issues. For the purposes of this project, the short-term solution was to clean the data using various transformation techniques. However, if I had more time and context, I would dig deeper into the reasons behind the vast amounts of duplicate/null data and correct the upstream failures as a longer-term solution.
 
 **Duplicate Data Risk** <br>
 The analytics table contained millions of duplicate rows which had been deleted during my data cleaning. However, identiying the root cause is crucial since duplicates: 
 * Inhibit accuracy and can skew results used to make business decisions 
-* Unnecessarily reduce query optimization
+* Unnecessarily reduces query optimization
   
 **Missing Values Risk** <br>
 Within the dataset there were many null values that impeded my ability to produce complete and accurate reports. For example, `new_all_sessions.city` had many null values that made it difficult to determine the most accurate answers to the given questions in [starting_with_questions.md](/starting_with_questions.md). Therefore, the city with the highest transaction revenue couldn’t be identified because that row’s city value was not available. As a result, the answer given was technically for the second highest transaction revenue instead.
@@ -45,7 +45,7 @@ It’s crucial to ensure ‘completeness’ within the dataset as it allows me t
 
 For example, the money amounts in the dataset were not representative of real world values. These amounts were 1,000,000 times greater than would have been realistic for the products. As a result, a “Youtube Notebook and Pen Set” was listed as $7,990,000. When divided by 1,000,000, it computes a more realistic price of $7.99.
 
-These queries were used to determine if the values fall within an expected range:
+These queries were used to determine if the values fell within an expected range:
 ```SQL
 SELECT product_price,
        v2productname
@@ -68,7 +68,7 @@ WHERE product_price > 1000000;
 **Uniqueness - are there duplicates in the dataset where there shouldn’t be?** <br>
 Testing for uniqueness is important for many reasons such as:
 * Identifying a table’s primary key
-* Ensuring that duplicate data is removed to prevent biased or misleading results which build trust in the data analysis 
+* Ensuring that duplicate data is removed to prevent biased or misleading results
 
 For example, `salesbysku.productsku` is likely the primary key. To test this theory, you would run the following query:
 ```SQL
