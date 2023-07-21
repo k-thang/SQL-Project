@@ -23,7 +23,7 @@ GROUP by channel_grouping
 ORDER BY SUM(product_quantity*product_price) DESC;
 ```
 Answer:
-Referrals generate the most amount of revenue followed by the organic search and direct channels. Since word of mouth proves to be a revenue generator then the site should start requesting customer testimonies and offering referral bonuses to boost referral sales.
+The data shows that the most profitable channel grouping is referrals. To keep momentum in referral sales, the business should design a word-of-mouth marketing strategy that requests customer testimonies and/or offers referral bonuses.
 ## Question 3: How is the revenue distributed by month? Are there any patterns?
 SQL Queries:
 ```SQL
