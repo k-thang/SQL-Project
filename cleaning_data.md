@@ -55,7 +55,7 @@ Therefore, I deleted `all_sessions.time` and will only reference `analytics.visi
 ALTER TABLE all_sessions
 DROP COLUMN time;
 ```
-Although the `analytics.visit_starttime` is correct, if I was presenting the data to a less technical audience then I would cast it to a more readable format. The query would be as follows:
+Although `analytics.visit_starttime` is correct, if I was presenting the data to a less technical audience then I would cast it to a more readable format. The query would be as follows:
 ```SQL
 SELECT TO_TIMESTAMP(visit_starttime)::TIME
 FROM analytics;
@@ -94,7 +94,7 @@ ALTER TABLE insert_table_name
 ADD FOREIGN KEY (insert_attribute_name) REFERENCES existing_table_name(existing_table_primarykey);
 ```
 **Addressing Duplicate Data** <br>
-Duplicate data was found in the analytics and all_sessions table. The following queries were executed in order to check for duplicates and then delete them:
+Duplicate data was found in the analytics and all_sessions tables. The following queries were executed in order to check for duplicates and then delete them:
 ```SQL
 -- Query checks the entire analytics table for duplicate values
 SELECT 	 COUNT(*), 
