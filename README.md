@@ -1,7 +1,7 @@
 # Final-Project-Transforming-and-Analyzing-Data-with-SQL
 
 ## Project/Goals
-This repository allows the reader to attain insights into an e-commerce’s store data through the use of various transformation and analysis techniques. These insights will be used to craft actionable next steps in order to increase the site’s revenue.
+The goal is to attain insights into an e-commerce's store data through the use of various transformation and analysis techniques. These findings will be used to craft actionable next steps in order to increase the site’s revenue.
 
 ## Process
 1. Created a database using PgAdmin and the provided [csv files](https://drive.google.com/drive/folders/1efDA4oc9w-bTbAvrESdOJpg9u-gEUBhJ).
