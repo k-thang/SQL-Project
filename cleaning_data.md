@@ -96,7 +96,7 @@ ADD FOREIGN KEY (insert_attribute_name) REFERENCES existing_table_name(existing_
 **Addressing Duplicate Data** <br>
 Duplicate data was found in the analytics and all_sessions tables. The following queries were executed in order to check for duplicates and then delete them:
 ```SQL
--- Query checks the entire analytics table for duplicate values
+-- Query checks the entire analytics table for duplicates
 SELECT 	 COUNT(*), 
          visitnumber,
          visitid,
